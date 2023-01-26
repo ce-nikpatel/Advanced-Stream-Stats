@@ -44,9 +44,10 @@ class PlanController extends Controller
      * @param  \App\Models\Plan  $plan
      * @return \Illuminate\Http\Response
      */
-    public function show(Plan $plan)
+    public function show($id, Request $request)
     {
-        //
+        $plan = Plan::find($id);
+        return view('plans.show', compact('plan'));
     }
 
     /**
