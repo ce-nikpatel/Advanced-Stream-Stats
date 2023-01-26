@@ -29,7 +29,7 @@ class AddPlansDetailToSubscriptionsTable extends Migration
     {
         Schema::table('subscriptions', function (Blueprint $table) {
             $table->dropForeign('subscriptions_plan_id_foreign');
-            $table->dropColumn('subscriptions_plan_id');
+            $table->dropColumn('plan_id');
             $table->dropColumn('price');
         });
     }
