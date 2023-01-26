@@ -31,7 +31,6 @@ class SubscriptionController extends Controller
     {
         DB::beginTransaction();
         $plan = Plan::where('braintree_plan', $request->get('plan'))->first();
-        // dd($plan);
         if (!empty($plan)) {
             $user = Auth::user();
             $customer = $this->createCustomer($user, $request);
@@ -65,6 +64,7 @@ class SubscriptionController extends Controller
         $subscription->price = $plan->price;
         $subscription->braintree_id = $subscribeResult->subscription->id;
         $subscription->braintree_plan = $subscribeResult->subscription->transactions[0]->planId;
+        $subscription->next_billing_date = $subscribeResult->subscription->nextBillingDate->format('Y-m-d H:i:s');
         $subscription->quantity = 1;
         $subscription->save();
         return true;
@@ -125,6 +125,7 @@ class SubscriptionController extends Controller
                 ]
             );
         }
+    // dd($customer);
         return $customer;
     }
 

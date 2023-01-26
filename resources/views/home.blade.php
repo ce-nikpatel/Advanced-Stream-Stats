@@ -26,7 +26,8 @@
                             </div>
                         @endif
                         @if (!empty($subscription))
-                            {{ __('Current Active Subscription') }}: <strong>${{ $subscription->price }}({!! ucwords($subscription->name) !!})</strong> </br></br>
+                            <div class="mb-2">{{ __('Current Active Subscription') }}: <strong>${{ $subscription->price }}({!! ucwords($subscription->name) !!})</strong> </div>
+                            <div class="mb-2">{{ __('Next Billing Date') }}: <strong>{!! date("m/d/Y",strtotime($subscription->next_billing_date)) !!}</strong></div>
                             <button id="my-button" class="btn btn-primary pull-right cancel-plan">
                                 Cancel Subscription
                             </button>
