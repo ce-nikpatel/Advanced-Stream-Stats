@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Plan;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PlanController extends Controller
 {
@@ -47,6 +49,10 @@ class PlanController extends Controller
     public function show($id, Request $request)
     {
         $plan = Plan::find($id);
+        $subscription = Subscription::where('user_id',Auth::user()->id)->first();
+        if(!empty($subscription)){
+            return redirect()->route('home')->with('error', 'You have already active subscription.');
+        }
         return view('plans.show', compact('plan'));
     }
 

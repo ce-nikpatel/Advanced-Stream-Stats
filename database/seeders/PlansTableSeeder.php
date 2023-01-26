@@ -51,6 +51,7 @@ class PlansTableSeeder extends Seeder
                 $plan->price = $planVal['price'];
                 $plan->slug = Str::slug($planVal['name']);
                 $plan->braintree_plan = $result->plan->id;
+                $plan->billing_frequency = $planVal['billing_frequency'];
                 $plan->save();
             }
         }

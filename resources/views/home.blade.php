@@ -26,12 +26,12 @@
                             </div>
                         @endif
                         @if (!empty($subscription))
-                            {{ __('You are subscribed with this plan') }} => <strong>{!! $subscription->name !!}</strong>
+                            {{ __('Current Active Subscription') }}: <strong>${{ $subscription->price }}({!! ucwords($subscription->name) !!})</strong> </br></br>
                             <button id="my-button" class="btn btn-primary pull-right cancel-plan">
-                                Cancel Plan
+                                Cancel Subscription
                             </button>
                         @else
-                            {{ __('Please You will subscribe with below plan.') }}
+                            {{ __("Currently, you don't have active subscription. Please subscribe the plan from the list.") }}
                         @endif
                     </div>
                 </div>
@@ -41,16 +41,15 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
-                        Plans
+                        Available Plans
                     </div>
                     <div class="card-body">
                         <ul class="list-group">
                             @foreach ($plans as $plan)
                                 <li class="list-group-item clearfix">
                                     <div class="pull-left">
-                                        <h5>{{ $plan->name }}</h5>
-                                        <h5>${{ number_format($plan->price, 2) }} <strong>{{ $plan->billingFrequency }}
-                                                month</strong></h5>
+                                        <h5>{{ ucwords($plan->name) }}</h5>
+                                        <h5>${{ number_format($plan->price, 2) }} <strong> [Every {{ $plan->billing_frequency }} Month(s)]</strong></h5>
                                         <h5>{{ $plan->description }}</h5>
 
                                         @if (empty($subscription))

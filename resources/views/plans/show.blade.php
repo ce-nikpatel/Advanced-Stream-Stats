@@ -6,9 +6,9 @@
             <div id="loading-content"></div>
         </section>
         <div class="row justify-content-center mt-5">
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ $plan->name }}</div>
+                    <div class="card-header">{{ ucwords($plan->name) }}</div>
                     <div class="card-body">
                         <form method="post" action="{{ route('subscription.create') }}">
                             @csrf

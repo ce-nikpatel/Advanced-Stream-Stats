@@ -61,6 +61,8 @@ class SubscriptionController extends Controller
         $subscription = new Subscription();
         $subscription->user_id = $user->id;
         $subscription->name = $plan->name;
+        $subscription->plan_id = $plan->id;
+        $subscription->price = $plan->price;
         $subscription->braintree_id = $subscribeResult->subscription->id;
         $subscription->braintree_plan = $subscribeResult->subscription->transactions[0]->planId;
         $subscription->quantity = 1;
