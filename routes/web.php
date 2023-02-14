@@ -28,7 +28,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/plan/create', [PlanController::class, 'create'])->name('plan.create');
-    Route::post('/plan/create', [PlanController::class, 'store'])->name('plan.create');
+    Route::post('/plan/create', [PlanController::class, 'store'])->name('plan.store');
     Route::get('/plan/{plan}', [PlanController::class, 'show'])->name('plan.show');
     Route::get('/braintree/token', [BraintreeController::class,'index'])->name('token');
     Route::post('/subscription', [SubscriptionController::class, 'create'])->name('subscription.create');

@@ -16,7 +16,7 @@ class AddPlansDetailToSubscriptionsTable extends Migration
         Schema::table('subscriptions', function (Blueprint $table) {
             $table->bigInteger('plan_id')->nullable()->unsigned()->index()->after('name');
             $table->foreign('plan_id')->references('id')->on('plans')->onDelete('cascade');
-            $table->float('price')->after('plan_id');
+            $table->float('price')->after('plan_id')->nullable();
         });
     }
 

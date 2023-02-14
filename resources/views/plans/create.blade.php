@@ -12,7 +12,7 @@
                 <div class="card">
                     <div class="card-header">Create Plan</div>
                     <div class="card-body">
-                        <form method="post" action="{{ route('plan.create') }}">
+                        <form method="post" action="{{ route('plan.store') }}">
                             @csrf
                             <div class="row mb-3">
                                 <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
